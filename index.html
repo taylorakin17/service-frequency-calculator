@@ -91,13 +91,13 @@
       </div>
 
       <div class="card input-card">
-        <label class="card-label" for="minutesPerSprayInput">Minutes per Spray</label>
+        <label class="card-label" for="secondsPerSprayInput">Seconds per Spray</label>
         <input
           type="number"
-          id="minutesPerSprayInput"
+          id="secondsPerSprayInput"
           class="number-input"
-          inputmode="decimal"
-          step="0.25"
+          inputmode="numeric"
+          pattern="[0-9]*"
           autocomplete="off"
         >
       </div>
@@ -186,7 +186,7 @@
         <div class="settings-group-label">How It's Calculated</div>
         <div class="settings-card calc-note">
           <p class="calc-line">Daily usage (oz)</p>
-          <code class="calc-formula">nozzles × sprays × minutes × rate</code>
+          <code class="calc-formula">nozzles × sprays × (seconds ÷ 60) × rate</code>
           <p class="calc-line calc-line--spaced">Service frequency (days)</p>
           <code class="calc-formula">effective gallons × 128 ÷ daily oz</code>
           <p class="calc-footnote">128 oz per gallon · Result rounded down to whole days</p>

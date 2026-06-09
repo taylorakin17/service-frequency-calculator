@@ -5,7 +5,7 @@
 const DEFAULTS = {
   nozzleCount:          15,
   spraysPerDay:         5,
-  minutesPerSpray:      1,
+  secondsPerSpray:      60,
   selectedBarrelSize:   55,
   effectiveGallons55:   52,
   effectiveGallons30:   28,
@@ -20,7 +20,7 @@ const DEFAULTS = {
 const state = {
   nozzleCount:          loadNumber('nozzleCount',          DEFAULTS.nozzleCount),
   spraysPerDay:         loadNumber('spraysPerDay',         DEFAULTS.spraysPerDay),
-  minutesPerSpray:      loadNumber('minutesPerSpray',      DEFAULTS.minutesPerSpray),
+  secondsPerSpray:      loadNumber('secondsPerSpray',      DEFAULTS.secondsPerSpray),
   selectedBarrelSize:   loadNumber('selectedBarrelSize',   DEFAULTS.selectedBarrelSize),
   effectiveGallonsMap:  {
     55: loadNumber('effectiveGallons55', DEFAULTS.effectiveGallons55),
@@ -39,8 +39,8 @@ function loadNumber(key, fallback) {
 // Calculation
 // ============================================================
 
-function calculateServiceFrequencyDays(nozzleCount, spraysPerDay, minutesPerSpray, sprayRateOzPerMinute, effectiveGallons) {
-  const dailyUsageOz = nozzleCount * spraysPerDay * minutesPerSpray * sprayRateOzPerMinute;
+function calculateServiceFrequencyDays(nozzleCount, spraysPerDay, secondsPerSpray, sprayRateOzPerMinute, effectiveGallons) {
+  const dailyUsageOz = nozzleCount * spraysPerDay * (secondsPerSpray / 60) * sprayRateOzPerMinute;
   if (dailyUsageOz <= 0) return null;
   return Math.floor((effectiveGallons * 128) / dailyUsageOz);
 }
@@ -56,7 +56,7 @@ function refreshResult() {
   const days = calculateServiceFrequencyDays(
     state.nozzleCount,
     state.spraysPerDay,
-    state.minutesPerSpray,
+    state.secondsPerSpray,
     state.sprayRateOzPerMinute,
     effectiveGallons
   );
@@ -158,12 +158,12 @@ attachNumberInput(document.getElementById('spraysPerDayInput'), {
   defaultValue: DEFAULTS.spraysPerDay,
 });
 
-attachNumberInput(document.getElementById('minutesPerSprayInput'), {
-  get: ()  => state.minutesPerSpray,
-  set: (v) => { state.minutesPerSpray = v; },
-  storageKey:   'minutesPerSpray',
-  min:          0.01,
-  defaultValue: DEFAULTS.minutesPerSpray,
+attachNumberInput(document.getElementById('secondsPerSprayInput'), {
+  get: ()  => state.secondsPerSpray,
+  set: (v) => { state.secondsPerSpray = v; },
+  storageKey:   'secondsPerSpray',
+  min:          1,
+  defaultValue: DEFAULTS.secondsPerSpray,
 });
 
 // ============================================================
