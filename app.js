@@ -259,3 +259,27 @@ if ('serviceWorker' in navigator) {
     console.warn('Service worker registration failed:', err);
   });
 }
+
+// ============================================================
+// Install banner
+// ============================================================
+
+const installBanner = document.getElementById('installBanner');
+const installBannerDismiss = document.getElementById('installBannerDismiss');
+
+const isRunningInstalled =
+  window.navigator.standalone === true ||
+  window.matchMedia('(display-mode: standalone)').matches;
+
+const hasDismissedBanner = localStorage.getItem('installBannerDismissed') === 'true';
+
+function dismissInstallBanner() {
+  installBanner.classList.remove('install-banner--visible');
+  localStorage.setItem('installBannerDismissed', 'true');
+}
+
+if (!isRunningInstalled && !hasDismissedBanner) {
+  setTimeout(() => installBanner.classList.add('install-banner--visible'), 1200);
+}
+
+installBannerDismiss.addEventListener('click', dismissInstallBanner);
