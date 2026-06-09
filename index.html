@@ -58,7 +58,7 @@
         <div class="result-unit">days</div>
       </div>
 
-      <div class="card">
+      <div class="card barrel-card">
         <div class="card-label">Barrel Capacity</div>
         <div class="chip-group" id="barrelChips">
           <button class="chip chip--selected" data-value="55">55 Gallons</button>
@@ -66,40 +66,44 @@
         </div>
       </div>
 
-      <div class="card input-card">
-        <label class="card-label" for="nozzleCountInput">Nozzle Count</label>
-        <input
-          type="number"
-          id="nozzleCountInput"
-          class="number-input"
-          inputmode="numeric"
-          autocomplete="off"
-          pattern="[0-9]*"
-        >
-      </div>
+      <div class="inputs-grid">
 
-      <div class="card input-card">
-        <label class="card-label" for="spraysPerDayInput">Sprays per Day</label>
-        <input
-          type="number"
-          id="spraysPerDayInput"
-          class="number-input"
-          inputmode="numeric"
-          autocomplete="off"
-          pattern="[0-9]*"
-        >
-      </div>
+        <div class="card input-card">
+          <label class="card-label" for="nozzleCountInput">Nozzle Count</label>
+          <input
+            type="number"
+            id="nozzleCountInput"
+            class="number-input"
+            inputmode="numeric"
+            autocomplete="off"
+            pattern="[0-9]*"
+          >
+        </div>
 
-      <div class="card input-card">
-        <label class="card-label" for="secondsPerSprayInput">Seconds per Spray</label>
-        <input
-          type="number"
-          id="secondsPerSprayInput"
-          class="number-input"
-          inputmode="numeric"
-          pattern="[0-9]*"
-          autocomplete="off"
-        >
+        <div class="card input-card">
+          <label class="card-label" for="spraysPerDayInput">Sprays per Day</label>
+          <input
+            type="number"
+            id="spraysPerDayInput"
+            class="number-input"
+            inputmode="numeric"
+            autocomplete="off"
+            pattern="[0-9]*"
+          >
+        </div>
+
+        <div class="card input-card input-card--wide">
+          <label class="card-label" for="secondsPerSprayInput">Seconds per Spray</label>
+          <input
+            type="number"
+            id="secondsPerSprayInput"
+            class="number-input"
+            inputmode="numeric"
+            pattern="[0-9]*"
+            autocomplete="off"
+          >
+        </div>
+
       </div>
 
     </main>
