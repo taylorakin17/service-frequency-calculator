@@ -1,4 +1,4 @@
-const CACHE_VERSION = 'v6';
+const CACHE_VERSION = 'v7';
 const CACHE_NAME = `service-frequency-${CACHE_VERSION}`;
 
 // Derive the base path from where the service worker lives so this works

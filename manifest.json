@@ -1,6 +1,6 @@
 {
-  "name": "Service Frequency Calculator",
-  "short_name": "Barrel Calc",
+  "name": "Service Calculator",
+  "short_name": "Service Calculator",
   "description": "Calculate how often a spray barrel needs to be serviced.",
   "start_url": ".",
   "scope": ".",
