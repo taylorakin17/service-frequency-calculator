@@ -88,8 +88,8 @@ input[type="number"] {
 .app {
   display: flex;
   flex-direction: column;
-  height: 100dvh;
   height: 100vh;
+  height: 100svh; /* small viewport: always fits even with address bar visible */
   max-width: 480px;
   margin: 0 auto;
   overflow: hidden;
@@ -105,8 +105,8 @@ input[type="number"] {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 14px 20px;
-  padding-top: calc(14px + env(safe-area-inset-top));
+  padding: 10px 16px;
+  padding-top: max(10px, env(safe-area-inset-top));
   background: var(--header-bg);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
@@ -157,12 +157,12 @@ input[type="number"] {
   flex: 1;
   min-height: 0;
   overflow: hidden;
-  padding: 10px 16px;
-  padding-bottom: calc(10px + env(safe-area-inset-bottom));
+  padding: 8px 12px;
+  padding-bottom: calc(8px + env(safe-area-inset-bottom));
   display: grid;
-  grid-template-rows: 1.6fr 0.9fr 1.5fr;
+  grid-template-rows: auto auto 1fr;
   grid-template-columns: 1fr;
-  gap: 8px;
+  gap: 7px;
 }
 
 /* ============================================================
@@ -174,8 +174,8 @@ input[type="number"] {
   flex-direction: column;
   justify-content: center;
   background: var(--surface);
-  border-radius: 16px;
-  padding: 12px 16px;
+  border-radius: 14px;
+  padding: 10px 14px;
   box-shadow: var(--shadow);
   transition: background-color 0.25s ease, box-shadow 0.25s ease;
   animation: cardIn 0.38s cubic-bezier(0.22, 1, 0.36, 1) both;
@@ -202,7 +202,7 @@ input[type="number"] {
   color: var(--text-secondary);
   text-transform: uppercase;
   letter-spacing: 0.065em;
-  margin-bottom: 8px;
+  margin-bottom: 6px;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -218,7 +218,7 @@ label.card-label {
 .result-card {
   text-align: center;
   align-items: center;
-  padding: 12px 20px;
+  padding: 10px 20px;
 }
 
 /* ============================================================
@@ -249,8 +249,9 @@ label.card-label {
   .main-content {
     grid-template-rows: 1fr 1fr;
     grid-template-columns: 1fr 1fr;
-    padding: 8px 16px;
-    padding-bottom: calc(8px + env(safe-area-inset-bottom));
+    padding: 6px 12px;
+    padding-bottom: calc(6px + env(safe-area-inset-bottom));
+    gap: 6px;
   }
 
   .result-card {
@@ -268,6 +269,7 @@ label.card-label {
     grid-row: 1 / 3;
     grid-template-columns: 1fr;
     grid-template-rows: 1fr 1fr 1fr;
+    gap: 6px;
   }
 
   .input-card--wide {
@@ -275,31 +277,31 @@ label.card-label {
   }
 
   .result-number {
-    font-size: 48px;
+    font-size: 36px;
   }
 
   .card-label {
-    margin-bottom: 6px;
+    margin-bottom: 4px;
   }
 }
 
 .result-label {
-  font-size: 13px;
-  font-weight: 500;
+  font-size: 11px;
+  font-weight: 600;
   color: var(--text-secondary);
   text-transform: uppercase;
   letter-spacing: 0.065em;
-  margin-bottom: 6px;
+  margin-bottom: 2px;
 }
 
 .result-display {
   line-height: 1;
-  margin-bottom: 4px;
+  margin-bottom: 2px;
 }
 
 .result-number {
   font-family: 'Space Mono', 'SF Mono', ui-monospace, monospace;
-  font-size: 60px;
+  font-size: 44px;
   font-weight: 700;
   color: var(--text-primary);
   letter-spacing: -0.03em;
@@ -317,7 +319,7 @@ label.card-label {
 }
 
 .result-unit {
-  font-size: 17px;
+  font-size: 14px;
   font-weight: 500;
   color: var(--text-secondary);
   letter-spacing: 0.01em;
@@ -333,9 +335,9 @@ label.card-label {
 
 .chip {
   flex: 1;
-  padding: 11px 0;
+  padding: 9px 0;
   border-radius: 50px;
-  font-size: 15px;
+  font-size: 14px;
   font-weight: 600;
   letter-spacing: -0.01em;
   color: var(--chip-inactive-fg);
@@ -361,8 +363,8 @@ label.card-label {
   background: var(--surface-2);
   border: none;
   border-radius: 10px;
-  padding: 13px 14px;
-  font-size: 20px;
+  padding: 10px 12px;
+  font-size: 17px;
   font-weight: 400;
   font-family: 'Space Mono', 'SF Mono', ui-monospace, monospace;
   color: var(--text-primary);
